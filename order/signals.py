@@ -17,9 +17,8 @@ def send_order_status_email(sender, instance, **kwargs):
     # Check if the order status has changed
     if old_status != instance.order_status:
         # Send email to customer
-        print("Working")
-        subject = f'Order {instance.id} status changed to {instance.order_status}'
-        message = f'Dear customer,\n\nYour order with id {instance.order_name} with orderId {instance.id} has been updated to {instance.order_status}.\n\nThank you!'
+        subject = f'Order {instance.order_name} status changed to {instance.order_status}'
+        message = f'Dear customer,\n\nYour order {instance.order_name} with orderId {instance.id} has been updated to {instance.order_status}.\n\nThank you!'
         from_email = 'devxplore202@gmail.com'
         recipient_list = [instance.customer_email]
         send_mail(subject, message, from_email, recipient_list)
@@ -28,8 +27,8 @@ def send_order_status_email(sender, instance, **kwargs):
 def send_order_status_email(sender, instance, created, **kwargs):
     if created:
         # Send email to customer
-        subject = f'New Order {instance.id} received'
-        message = f'Dear customer,\n\nYour order with id {instance.id} has been received.\n\nThank you for shopping with us!'
-        from_email = 'your_email@gmail.com'
+        subject = f'Order {instance.order_name} status changed to {instance.order_status}'
+        message = f'Dear customer,\n\nYour order {instance.order_name} with orderId {instance.id} has been updated to {instance.order_status}.\n\nThank you!'
+        from_email = 'devxplore202@gmail.com'
         recipient_list = [instance.customer_email]
         send_mail(subject, message, from_email, recipient_list)

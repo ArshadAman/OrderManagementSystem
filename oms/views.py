@@ -4,7 +4,11 @@ from django.contrib.auth import get_user_model
 from django.contrib import messages
 
 def homepage(request):
-    return render(request, 'index.html')
+    admin_exists = False
+    User = get_user_model()
+    if User.objects.filter(is_superuser=True).exists():
+        admin_exists = True
+    return render(request, 'index.html', {admin_exists:admin_exists})
 
 def create_super_user(request):
     if request.method == "POST":

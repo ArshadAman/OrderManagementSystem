@@ -14,7 +14,10 @@
   </head>
   <body>
     <div class="my-5 d-flex justify-content-center" style="height: 80vh; align-items: center; width:100vw;">
-      <a href={% url 'admin:index' %}><button class="btn btn-lg btn-success" >Login</button></a>
+      <a href={% url 'admin:index' %} class="mx-4"><button class="btn btn-lg btn-success" >Go to Dashboard</button></a>
+      {% if admin_exits %}
+        <a href={% url 'create-admin' %}><button class="btn btn-lg btn-danger" >Create Admin account</button></a>
+      {% endif %}
     </div>
     {% comment %} Scripts {% endcomment %}
     <script
