@@ -1,8 +1,7 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from django.contrib.auth import get_user_model, authenticate, login, logout
-# from django.contrib.auth.hashers import make_password, check_password
-
+from django.contrib.auth import get_user_model
+from django.contrib import messages
 
 def homepage(request):
     return render(request, 'index.html')
@@ -14,21 +13,12 @@ def create_super_user(request):
         password = request.POST['password']
         confirm_password = request.POST['confirm_password']
         if password == confirm_password:
-            print(email, username, password, confirm_password)
             User = get_user_model()
-            User.objects.create_superuser(username, email, password)
-            return redirect(reverse('admin:index'))
+            if not User.objects.filter(is_superuser=True).exists():
+                User.objects.create_superuser(username, email, password)
+                return redirect(reverse('admin:index'))
+            else:
+                print("superuser already exits")
+                messages.error(request, 'Superuser already exits')
+                return redirect('create-admin')
     return render(request, "create_admin.html")
-
-def user_login(request):
-    if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-
-        user = authenticate(request, username = username, password=password)
-        print(user)
-        if user is not None:
-            login(request, user)
-            print(user.username)
-            return redirect(reverse('admin:index'))
-    return render(request, 'user_login.html')
