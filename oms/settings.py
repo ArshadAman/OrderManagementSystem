@@ -158,7 +158,7 @@ JAZZMIN_SETTINGS = {
     "welcome_sign": "Welcome to the VERSUITALITY",
     # Copyright on the footer
     "copyright": "VERSUITALITY",
-    "user_avatar": "dashboard/vl.png",
+    "user_avatar": None,
     ############
     # Top Menu #
     ############
