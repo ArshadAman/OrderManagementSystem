@@ -149,23 +149,23 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Jazzmin Configurarions
 JAZZMIN_SETTINGS = {
-    "site_title": "Versitility Dashboard",
-    "site_header": "Versitility Dashboard",
-    "site_brand": "Versitility Dashboard",
-    "site_icon": "images/favicon.png",
+    "site_title": "VERSUITALITY",
+    "site_header": "VERSUITALITY",
+    "site_brand": "VERSUITALITY ",
+    "site_icon": "dashboard/vl.png",
     # Add your own branding here
-    "site_logo": None,
-    "welcome_sign": "Welcome to the Versitility Dashboard",
+    "site_logo": "dashboard/vl.png",
+    "welcome_sign": "Welcome to the VERSUITALITY",
     # Copyright on the footer
-    "copyright": "Versitility Dashboard",
-    "user_avatar": None,
+    "copyright": "VERSUITALITY",
+    "user_avatar": "dashboard/vl.png",
     ############
     # Top Menu #
     ############
     # Links to put along the top menu
     "topmenu_links": [
         # Url that gets reversed (Permissions can be added)
-        {"name": "Versitility Dashboard", "url": "home", "permissions": ["auth.view_user"]},
+        {"name": "VERSUITALITY", "url": "home", "permissions": ["auth.view_user"]},
         # model admin to link to (Permissions checked against model)
         {"model": "auth.User"},
     ],
@@ -212,6 +212,9 @@ JAZZMIN_SETTINGS = {
         "auth.group": "vertical_tabs",
     },
 }
+
+JAZZMIN_SETTINGS["show_ui_builder"] = True
+
 JAZZMIN_UI_TWEAKS = {
     "theme": "materia",
 }
