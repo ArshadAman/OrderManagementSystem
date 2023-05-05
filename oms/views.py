@@ -22,6 +22,6 @@ def create_super_user(request):
                 User.objects.create_superuser(username, email, password)
                 return redirect(reverse('admin:index'))
             else:
-                messages.error(request, 'Superuser already exits')
+                messages.error(request, 'Superuser already exists')
                 return redirect('create-admin')
     return render(request, "create_admin.html")

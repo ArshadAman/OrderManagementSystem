@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-85=+s2j9n(rnzz=9njr0)j5k_@v$fmi9ns(v3346f)1medfhl@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -213,11 +213,40 @@ JAZZMIN_SETTINGS = {
     },
 }
 
-JAZZMIN_SETTINGS["show_ui_builder"] = True
+JAZZMIN_SETTINGS["show_ui_builder"] = False
 
 JAZZMIN_UI_TWEAKS = {
-    "theme": "materia",
+    "navbar_small_text": False,
+    "footer_small_text": False,
+    "body_small_text": False,
+    "brand_small_text": False,
+    "brand_colour": "navbar-light",
+    "accent": "accent-navy",
+    "navbar": "navbar-white navbar-light",
+    "no_navbar_border": False,
+    "navbar_fixed": False,
+    "layout_boxed": False,
+    "footer_fixed": False,
+    "sidebar_fixed": False,
+    "sidebar": "sidebar-light-warning",
+    "sidebar_nav_small_text": False,
+    "sidebar_disable_expand": False,
+    "sidebar_nav_child_indent": False,
+    "sidebar_nav_compact_style": False,
+    "sidebar_nav_legacy_style": False,
+    "sidebar_nav_flat_style": False,
+    "theme": "litera",
+    "dark_mode_theme": None,
+    "button_classes": {
+        "primary": "btn-primary",
+        "secondary": "btn-secondary",
+        "info": "btn-info",
+        "warning": "btn-warning",
+        "danger": "btn-danger",
+        "success": "btn-success"
+    }
 }
+
 
 
 # EMAIL CONFIGURATIONS
@@ -226,6 +255,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'devxplore202@gmail.com'
-EMAIL_HOST_PASSWORD = 'klpgpkvzxstnfyzp'
+EMAIL_HOST_USER = 'omverma1810@gmail.com'
+EMAIL_HOST_PASSWORD = 'jywjohxajpbpcfms'
 

@@ -8,6 +8,7 @@ class Order(models.Model):
         ('PROCESSING', 'Processing'),
         ('SHIPPED', 'Shipped'),
         ('DELIVERED', 'Delivered'),
+        ('ALTERATION', 'Alteration'),
     )
     order_name = models.CharField(max_length=100)
     order_status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='RECEIVED')
