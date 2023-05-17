@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import create_super_user, homepage
+from .views import create_super_user, homepage, form_data
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -24,4 +24,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('create-admin/', name="create-admin", view=create_super_user),
     path('', name="home-page", view=homepage),
+    path('form/', name="form-page", view=form_data),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

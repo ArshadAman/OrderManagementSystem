@@ -2,13 +2,16 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.contrib.auth import get_user_model
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+
 
 def homepage(request):
     admin_exists = False
     User = get_user_model()
     if User.objects.filter(is_superuser=True).exists():
         admin_exists = True
-    return render(request, 'index.html', {admin_exists:admin_exists})
+    return render(request, 'index.html', {admin_exists: admin_exists})
+
 
 def create_super_user(request):
     if request.method == "POST":
@@ -23,5 +26,11 @@ def create_super_user(request):
                 return redirect(reverse('admin:index'))
             else:
                 messages.error(request, 'Superuser already exits')
-                return redirect('create-admin')
+                return redirect('homepage')
     return render(request, "create_admin.html")
+
+@login_required
+def form_data(request):
+    if request.method == 'POST':
+        pass
+    return render(request,'form.html')

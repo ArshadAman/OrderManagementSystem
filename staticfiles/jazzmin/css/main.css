@@ -803,6 +803,7 @@ form ul.inline li {
 
 .navbar {
     padding: .5rem 2rem;
+    background-color: #c9a92d !important;
 }
 
 .main-footer {
