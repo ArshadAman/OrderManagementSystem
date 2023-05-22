@@ -200,7 +200,7 @@ JAZZMIN_SETTINGS = {
     # Uncomment this line once you create the bootstrap-dark.css file
     # "custom_css": "css/bootstrap-dark.css",
     "custom_js": None,
-    "custom_css": "css/kaambigado.css",
+    "custom_css": "css/styles.css",
     # Whether to show the UI customizer on the sidebar
     "show_ui_builder": False,
     ###############
