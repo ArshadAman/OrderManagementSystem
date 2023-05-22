@@ -200,6 +200,7 @@ JAZZMIN_SETTINGS = {
     # Uncomment this line once you create the bootstrap-dark.css file
     # "custom_css": "css/bootstrap-dark.css",
     "custom_js": None,
+    "custom_css": "css/kaambigado.css",
     # Whether to show the UI customizer on the sidebar
     "show_ui_builder": False,
     ###############
@@ -235,7 +236,7 @@ JAZZMIN_UI_TWEAKS = {
     "sidebar_nav_compact_style": False,
     "sidebar_nav_legacy_style": False,
     "sidebar_nav_flat_style": False,
-    "theme": "journal",
+    "theme": "litera",
     "dark_mode_theme": None,
     "button_classes": {
         "primary": "btn-outline-primary",

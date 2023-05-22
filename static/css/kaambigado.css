@@ -1,0 +1,15 @@
+.navbar{
+    background-color: #CBAA2E;
+}
+
+.sidebar-light-navy .nav-sidebar>.nav-item>.nav-link.active{
+    background-color: #2B275E;
+}
+
+.brand-link{
+    color: #2B275E;
+}
+
+.brand-text{
+    color: #CBAA2E;
+}
