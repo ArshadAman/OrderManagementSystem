@@ -1,6 +1,6 @@
 from django.db import models
 import uuid
-from django.utils.timezone import now
+from datetime import date
 
 # Create your models here.
 
@@ -9,18 +9,30 @@ class Order(models.Model):
     STATUS_CHOICES = (
         ('RECEIVED', 'Received'),
         ('PROCESSING', 'Processing'),
-        ('SHIPPED', 'Shipped'),
+        ('CUTTING', 'Cutting'),
+        ('STICHING', 'Stiching'),
         ('DELIVERED', 'Delivered'),
     )
-    order_name = models.CharField(max_length=100)
-    order_status = models.CharField(
-        max_length=20, choices=STATUS_CHOICES, default='RECEIVED')
-    customer_email = models.EmailField(max_length=300, null=True, blank=True)
     id = models.UUIDField(default=uuid.uuid4, unique=True,
                           primary_key=True, editable=False)
+    order_name = models.CharField(max_length=100, blank=False)
+    order_quantity = models.IntegerField(default=1, blank=False)
+    customer_email = models.EmailField(max_length=300, null=True, blank=True)
+    customer_name = models.CharField(max_length=100, null=True, blank=False)
+    order_recieved_date = models.DateField(auto_now=False, auto_now_add=False, null=True, blank=True)
+    order_due_date = models.DateField(auto_now=False, auto_now_add=False, null=True, blank=True)
+    order_priorty = models.IntegerField(default=0, blank=True, null=True)
+    order_status = models.CharField(
+        max_length=20, choices=STATUS_CHOICES, default='RECEIVED')
 
     def __str__(self) -> str:
-        return f'{self.order_name} - {self.order_status}'
+        return f"{self.customer_name}'s order of - {self.order_name} has been {self.order_status}"
+    
+    def save(self,*args, **kwargs):
+        if self.order_due_date:
+            days_remaining = (self.order_due_date - date.today()).days
+            self.order_priorty = max(0, days_remaining)
+        super().save(*args, **kwargs)
 
 
 class Mesurement(models.Model):
@@ -80,10 +92,11 @@ class Mesurement(models.Model):
         (2.5, 2.5),
         (2.75, 2.75),
     )
-
-    customer_name = models.CharField(max_length=100, blank=True, null=True)
-    customer_email = models.EmailField(max_length=300,blank=True, null=True)
-    customer_phone = models.IntegerField(blank=True, null=True)
+    # id = models.UUIDField(primary_key=True, default=uuid.uuid4)
+    order = models.OneToOneField(Order, on_delete=models.CASCADE, default=uuid.uuid4, related_name='measurement', blank=True)
+    customer_name = models.CharField(max_length=100, blank=False, null=True)
+    customer_email = models.EmailField(max_length=300, blank=False, null=True)
+    customer_phone = models.IntegerField(blank=False, null=False)
 
     # Blazer and Jacket 
 
@@ -100,6 +113,7 @@ class Mesurement(models.Model):
         max_length=10, choices=SLITS_CHOICES, null=True, blank=True)
     
     Blazer_Jacket_Additional_Information = models.TextField(max_length=2000, blank=True, null=True)
+    Blazer_sample_cloth_image = models.ImageField(upload_to="sample_images/blazers", blank=True, null=True)
     
 
     # Kurta Mesurement
@@ -124,6 +138,7 @@ class Mesurement(models.Model):
         max_length=20, choices=CollorPoint, blank=True, null=True)
     
     Kurta_Shirt_Additional_Information = models.TextField(max_length=2000, blank=True, null=True)
+    Kurta_sample_cloth_image = models.ImageField(upload_to="sample_images/kurta", blank=True, null=True)
 
     # Trouser Mesurement
 
@@ -155,6 +170,7 @@ class Mesurement(models.Model):
     pocketSize = models.CharField(max_length=50, blank=True, null=True)
 
     Trouser_Additional_Information = models.TextField(max_length=2000, blank=True, null=True)
+    Trouser_sample_cloth_image = models.ImageField(upload_to="sample_images/trouser", blank=True, null=True)
 
     # Images 
     blazer_image = models.ImageField(upload_to='blazer_images', blank=True, null=True, default='/form/blazer-jacket.bmp')

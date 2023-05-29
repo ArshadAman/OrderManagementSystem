@@ -28,9 +28,3 @@ def create_super_user(request):
                 messages.error(request, 'Superuser already exits')
                 return redirect('homepage')
     return render(request, "create_admin.html")
-
-@login_required
-def form_data(request):
-    if request.method == 'POST':
-        pass
-    return render(request,'form.html')

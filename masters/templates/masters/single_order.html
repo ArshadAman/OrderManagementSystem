@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Name of Customer: {{order.customer_name}}</h1>
+    <h2>Order: {{order.order_name}} - {{order.order_quantity}} pcs</h2>
+    <h3>Recieved Date: {{order.order_recieved_date}}</h3>
+    <h3>Delivery Date: {{order.order_due_date}}</h3>
+
+    <table cellspacing="10" cellpadding="5" border="2px" style="margin: auto auto;">
+        <tr>
+            <th><h4>Blazer/Jacket</h4></td>
+            <th><h4>Kurta/Shirt</h4></td>
+            <th><h4>Trouser</h4></td>
+        </tr>
+        <tr>
+            <td>{{order.measurement.front_length}}</td>
+            <td>{{order.measurement.kurta_front_length}}</td>
+            <td>{{order.measurement.Tourser_length}}</td>
+        </tr>
+        <tr>
+            <td>{{order.measurement.shoulder}}</td>
+            <td>{{order.measurement.kurta_shoulder}}</td>
+            <td>{{order.measurement.Tourser_inseam}}</td>
+        </tr>
+        <tr>
+            <td>{{order.measurement.sleeves}}</td>
+            <td>{{order.measurement.kurta_sleeves}}</td>
+            <td>{{order.measurement.Tourser_bottom}}</td>
+        </tr>
+        <tr>
+            <td>{{order.measurement.chest}}</td>
+            <td>{{order.measurement.kurta_chest}}</td>
+            <td>{{order.measurement.Tourser_knee}}</td>
+        </tr>
+        <tr>
+            <td>{{order.measurement.hip}}</td>
+            <td>{{order.measurement.kurta_hip}}</td>
+            <td>{{order.measurement.Tourser_hips}}</td>
+        </tr>
+        <tr>
+            <td>{{order.measurement.crossfront}}</td>
+            <td>{{order.measurement.kurta_sleeves_opening}}</td>
+            <td>{{order.measurement.Tourser_waist}}</td>
+        </tr>
+        <tr>
+            <td>{{order.measurement.crossback}}</td>
+            <td>{{order.measurement.kurta_biceps}}</td>
+            <td>{{order.measurement.Tourser_thigh}}</td>
+        </tr>
+        <tr>
+            <td>{{order.measurement.sherwani_vest}}</td>
+            <td>{{order.measurement.kurta_Cut_Choices}}</td>
+            <td>{{order.measurement.Tourser_rounding}}</td>
+        </tr>
+        <tr>
+            <td>{{order.measurement.slits}}</td>
+            <td>{{order.measurement.Kurta_Shirt_Additional_Information}}</td>
+            <td>{{order.measurement.Rise_Choices}}</td>
+        </tr>
+        <tr>
+            <td>{{order.measurement.Blazer_Jacket_Additional_Information}}</td>
+            <td>NA</td>
+            <td>{{order.measurement.Pleat_Choices}}</td>
+        </tr>
+        <tr>
+            <td>NA</td>
+            <td>NA</td>
+            <td>{{order.measurement.Belt_Choices}}</td>
+        </tr>
+        <tr>
+            <td>NA</td>
+            <td>NA</td>
+            <td>{{order.measurement.Pocket_Choices}}</td>
+        </tr>
+        <tr>
+            <td>NA</td>
+            <td>NA</td>
+            <td>{{order.measurement.Watch_Pocket_Choices}}</td>
+        </tr>
+        <tr>
+            <td>NA</td>
+            <td>NA</td>
+            <td>{{order.measurement.Watch_Pocket_Number}}</td>
+        </tr>
+        <tr>
+            <td>NA</td>
+            <td>NA</td>
+            <td>{{order.measurement.Mobile_Pockets}}</td>
+        </tr>
+        <tr>
+            <td>NA</td>
+            <td>NA</td>
+            <td>{{order.measurement.pocketSize}}</td>
+        </tr>
+        <tr>
+            <td>NA</td>
+            <td>NA</td>
+            <td>{{order.measurement.Trouser_Additional_Information}}</td>
+        </tr>
+        <tr>
+            <td>NA</td>
+            <td>NA</td>
+            <td>{{order.measurement.Trouser_Additional_Information}}</td>
+        </tr>
+        <tr>
+            <td>{{order.measurement.Blazer_sample_cloth_image}}</td>
+            <td>{{order.measurement.Kurta_sample_cloth_image}}</td>
+            <td>{{order.measurement.Trouser_sample_cloth_image}}</td>
+        </tr>
+    </table>
+    <button>Cutting Started</button>
+    <button>Stiching Started</button>
+    <button>Shirt Finished</button>
+</body>
+</html>

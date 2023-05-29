@@ -1,7 +1,5 @@
 from django.contrib import admin
-from django.utils.html import format_html
 from django.utils.safestring import mark_safe
-from PIL import Image
 
 # Register your models here.
 from .models import Order, Mesurement
@@ -11,16 +9,16 @@ admin.site.register(Order)
 class MeasurementAdmin(admin.ModelAdmin):
     fieldsets = (
         ('Customer Details', {
-            'fields': ('customer_name', 'customer_email', 'customer_phone'),
+            'fields': ('customer_name', 'customer_email', 'customer_phone', 'order'),
         }),
         ('Blazer/Jacket Mesurement', {
-            'fields': ('display_blazer_image', 'front_length', 'shoulder', 'sleeves', 'chest', 'waist', 'hip', 'crossfront', 'crossback', 'sherwani_vest', 'slits', 'Blazer_Jacket_Additional_Information'),
+            'fields': ('display_blazer_image', 'front_length', 'shoulder', 'sleeves', 'chest', 'waist', 'hip', 'crossfront', 'crossback', 'sherwani_vest', 'slits', 'Blazer_Jacket_Additional_Information', 'Blazer_sample_cloth_image'),
         }),
         ('Kurta/Shirts Mesurement', {
-            'fields': ('display_kurta_image', 'kurta_front_length', 'kurta_shoulder', 'kurta_sleeves', 'kurta_chest', 'kurta_waist', 'kurta_hip', 'kurta_sleeves_opening', 'kurta_biceps', 'kurta_Cut_Choices', 'kurta_Style_Choices', 'kurta_Neck_Choices', 'kurta_Collor_Choices', 'Kurta_Shirt_Additional_Information'),
+            'fields': ('display_kurta_image', 'kurta_front_length', 'kurta_shoulder', 'kurta_sleeves', 'kurta_chest', 'kurta_waist', 'kurta_hip', 'kurta_sleeves_opening', 'kurta_biceps', 'kurta_Cut_Choices', 'kurta_Style_Choices', 'kurta_Neck_Choices', 'kurta_Collor_Choices', 'Kurta_Shirt_Additional_Information', 'Kurta_sample_cloth_image'),
         }),
         ('Tourser Mesurement', {
-            'fields': ('display_trouser_image', 'Tourser_length', 'Tourser_inseam', 'Tourser_bottom', 'Tourser_knee', 'Tourser_thigh', 'Tourser_waist', 'Tourser_hips', 'Tourser_rounding', 'Rise_Choices', 'front_Down', 'Pleat_Choices', 'Belt_Choices', 'Pocket_Choices', 'Watch_Pocket_Choices', 'Watch_Pocket_Number', 'Mobile_Pockets', 'pocketSize', 'Trouser_Additional_Information'),
+            'fields': ('display_trouser_image', 'Tourser_length', 'Tourser_inseam', 'Tourser_bottom', 'Tourser_knee', 'Tourser_thigh', 'Tourser_waist', 'Tourser_hips', 'Tourser_rounding', 'Rise_Choices', 'front_Down', 'Pleat_Choices', 'Belt_Choices', 'Pocket_Choices', 'Watch_Pocket_Choices', 'Watch_Pocket_Number', 'Mobile_Pockets', 'pocketSize', 'Trouser_Additional_Information', 'Trouser_sample_cloth_image'),
         }),
     )
 
