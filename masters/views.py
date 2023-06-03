@@ -32,6 +32,13 @@ def logout_master(request):
     logout(request)
     return render(request, 'masters/login.html')
 
-def status_of_order(request):
-    # Master will change the stats of order by clicking buttons, and on click the mail will be sent to the admin that the master has stated working on the order for example the master has started cutting the clothes or he has started stiching the clothes or he has finished the order and accordingly the admin will the order status and the customer will recieve the mail regarding that. I still dont know how to implement that feature, like I know the logic not the process. I dont know why I am writing this but I am enjoying this. Ok see you tada bye bye... I will code you tommorow dear status of order.
-    pass
+@login_required(login_url="master-login")
+def status_of_order(request, id):
+    if request.method == "POST":
+        if request.data["status"] == "Cutting Started".lower():
+            pass
+        if request.data["status"] == "Stiching Started".lower():
+            pass
+        if request.data["status"] == "Finished".lower():
+            pass
+    return redirect("view-perticular-order", id=id)

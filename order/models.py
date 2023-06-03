@@ -2,9 +2,6 @@ from django.db import models
 import uuid
 from datetime import date
 
-# Create your models here.
-
-
 class Order(models.Model):
     STATUS_CHOICES = (
         ('RECEIVED', 'Received'),
