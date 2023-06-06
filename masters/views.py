@@ -11,7 +11,7 @@ def master_login(request):
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(username=username, password = password)
-        if(user.get_username() == "master"):
+        if(user.get_username() == "master" or user.is_superuser):
             login(request, user)
             return redirect('view-orders')
         return HttpResponse("You are not master")
@@ -25,20 +25,20 @@ def view_orders(request):
 @login_required(login_url="master-login")
 def view_perticular_order(request, id):
     order = Order.objects.get(id = id)
+    if request.method == "POST":
+        data = request.POST["status"]
+        if data == "cutting".lower():
+            order.order_status = "CUTTING STARTED"
+            order.save()
+        elif data == "stitching".lower():
+            order.order_status = "STITCHING STARTED"
+            order.save()
+        elif data == "finished".lower():
+            order.order_status = "ORDER READY"
+            order.save()
     return render(request, 'masters/single_order.html', context={"order":order})
 
 @login_required(login_url="master-login")
 def logout_master(request):
     logout(request)
-    return render(request, 'masters/login.html')
-
-@login_required(login_url="master-login")
-def status_of_order(request, id):
-    if request.method == "POST":
-        if request.data["status"] == "Cutting Started".lower():
-            pass
-        if request.data["status"] == "Stiching Started".lower():
-            pass
-        if request.data["status"] == "Finished".lower():
-            pass
-    return redirect("view-perticular-order", id=id)
+    return redirect('master-login')

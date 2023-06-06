@@ -1,121 +1,134 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css">
+    <title>Order Details</title>
 </head>
 <body>
-    <h1>Name of Customer: {{order.customer_name}}</h1>
-    <h2>Order: {{order.order_name}} - {{order.order_quantity}} pcs</h2>
-    <h3>Recieved Date: {{order.order_recieved_date}}</h3>
-    <h3>Delivery Date: {{order.order_due_date}}</h3>
-
-    <table cellspacing="10" cellpadding="5" border="2px" style="margin: auto auto;">
+    <div class="container py-5 text-center">
+        <h2 class="text-decoration-underline">Name of Customer: {{order.customer_name}}</h2>
+        <div class="d-flex justify-content-center align-items-center mt-2">
+            <h4 class="mx-3">Order: {{order.order_name}} - {{order.order_quantity}} pcs</h4>
+            <h4 class="mx-3">Recieved Date: {{order.order_recieved_date}}</h4>
+            <h4 class="mx-3">Delivery Date: {{order.order_due_date}}</h4>
+        </div>
+    <table class="table table-bordered">
+        <thead class="table-warning">
+            <tr>
+                <th><h4>Blazer/Jacket</h4></th>
+                <th><h4>Kurta/Shirt</h4></th>
+                <th><h4>Trouser</h4></th>
+            </tr>
+        </thead>
         <tr>
-            <th><h4>Blazer/Jacket</h4></td>
-            <th><h4>Kurta/Shirt</h4></td>
-            <th><h4>Trouser</h4></td>
+            <td class="text-center">{{order.measurement.front_length}} Front Length</td>
+            <td class="text-center">{{order.measurement.kurta_front_length}} Front Length</td>
+            <td class="text-center">{{order.measurement.Tourser_length}} Length</td>
         </tr>
         <tr>
-            <td>{{order.measurement.front_length}}</td>
-            <td>{{order.measurement.kurta_front_length}}</td>
-            <td>{{order.measurement.Tourser_length}}</td>
+            <td class="text-center">{{order.measurement.shoulder}} Soulder</td>
+            <td class="text-center">{{order.measurement.kurta_shoulder}} Soulder</td>
+            <td class="text-center">{{order.measurement.Tourser_inseam}} Inseam</td>
         </tr>
         <tr>
-            <td>{{order.measurement.shoulder}}</td>
-            <td>{{order.measurement.kurta_shoulder}}</td>
-            <td>{{order.measurement.Tourser_inseam}}</td>
+            <td class="text-center">{{order.measurement.sleeves}} Sleeves</td>
+            <td class="text-center">{{order.measurement.kurta_sleeves}} Sleeves</td>
+            <td class="text-center">{{order.measurement.Tourser_bottom}} Buttom</td>
         </tr>
         <tr>
-            <td>{{order.measurement.sleeves}}</td>
-            <td>{{order.measurement.kurta_sleeves}}</td>
-            <td>{{order.measurement.Tourser_bottom}}</td>
+            <td class="text-center">{{order.measurement.chest}} Chest</td>
+            <td class="text-center">{{order.measurement.kurta_chest}} Chest</td>
+            <td class="text-center">{{order.measurement.Tourser_knee}} Knee</td>
         </tr>
         <tr>
-            <td>{{order.measurement.chest}}</td>
-            <td>{{order.measurement.kurta_chest}}</td>
-            <td>{{order.measurement.Tourser_knee}}</td>
+            <td class="text-center">{{order.measurement.hip}} Hip</td>
+            <td class="text-center">{{order.measurement.kurta_hip}} Hip</td>
+            <td class="text-center">{{order.measurement.Tourser_hips}} Hips</td>
         </tr>
         <tr>
-            <td>{{order.measurement.hip}}</td>
-            <td>{{order.measurement.kurta_hip}}</td>
-            <td>{{order.measurement.Tourser_hips}}</td>
+            <td class="text-center">{{order.measurement.crossfront}} Cross Front</td>
+            <td class="text-center">{{order.measurement.kurta_sleeves_opening}} Sleeves Opening</td>
+            <td class="text-center">{{order.measurement.Tourser_waist}} Waist</td>
         </tr>
         <tr>
-            <td>{{order.measurement.crossfront}}</td>
-            <td>{{order.measurement.kurta_sleeves_opening}}</td>
-            <td>{{order.measurement.Tourser_waist}}</td>
+            <td class="text-center">{{order.measurement.crossback}} Cross Back</td>
+            <td class="text-center">{{order.measurement.kurta_biceps}} Biceps</td>
+            <td class="text-center">{{order.measurement.Tourser_thigh}} Thigh</td>
         </tr>
         <tr>
-            <td>{{order.measurement.crossback}}</td>
-            <td>{{order.measurement.kurta_biceps}}</td>
-            <td>{{order.measurement.Tourser_thigh}}</td>
+            <td class="text-center">{{order.measurement.sherwani_vest}} Vest</td>
+            <td class="text-center">{{order.measurement.kurta_Cut_Choices}} Cut Choice</td>
+            <td class="text-center">{{order.measurement.Tourser_rounding}} Rounding</td>
         </tr>
         <tr>
-            <td>{{order.measurement.sherwani_vest}}</td>
-            <td>{{order.measurement.kurta_Cut_Choices}}</td>
-            <td>{{order.measurement.Tourser_rounding}}</td>
+            <td class="text-center">{{order.measurement.slits}} Slits</td>
+            <td class="text-center">--</td>
+            <td class="text-center">{{order.measurement.Rise_Choices}} Rise Belt</td>
         </tr>
         <tr>
-            <td>{{order.measurement.slits}}</td>
-            <td>{{order.measurement.Kurta_Shirt_Additional_Information}}</td>
-            <td>{{order.measurement.Rise_Choices}}</td>
+            <td class="text-center">--</td>
+            <td class="text-center">--</td>
+            <td class="text-center">{{order.measurement.Pleat_Choices}}</td>
         </tr>
         <tr>
-            <td>{{order.measurement.Blazer_Jacket_Additional_Information}}</td>
-            <td>NA</td>
-            <td>{{order.measurement.Pleat_Choices}}</td>
+            <td class="text-center">--</td>
+            <td class="text-center">--</td>
+            <td class="text-center">{{order.measurement.Belt_Choices}}</td>
         </tr>
         <tr>
-            <td>NA</td>
-            <td>NA</td>
-            <td>{{order.measurement.Belt_Choices}}</td>
+            <td class="text-center">--</td>
+            <td class="text-center">--</td>
+            <td class="text-center">{{order.measurement.Pocket_Choices}} Pocket</td>
         </tr>
         <tr>
-            <td>NA</td>
-            <td>NA</td>
-            <td>{{order.measurement.Pocket_Choices}}</td>
+            <td class="text-center">--</td>
+            <td class="text-center">--</td>
+            <td class="text-center">Watch Pocket - {{order.measurement.Watch_Pocket_Choices}}</td>
         </tr>
         <tr>
-            <td>NA</td>
-            <td>NA</td>
-            <td>{{order.measurement.Watch_Pocket_Choices}}</td>
+            <td class="text-center">--</td>
+            <td class="text-center">--</td>
+            <td class="text-center">{{order.measurement.Watch_Pocket_Number}} Watch Pocket</td>
         </tr>
         <tr>
-            <td>NA</td>
-            <td>NA</td>
-            <td>{{order.measurement.Watch_Pocket_Number}}</td>
+            <td class="text-center">--</td>
+            <td class="text-center">--</td>
+            <td class="text-center">Mobile Pocket - {{order.measurement.Mobile_Pockets}}</td>
         </tr>
         <tr>
-            <td>NA</td>
-            <td>NA</td>
-            <td>{{order.measurement.Mobile_Pockets}}</td>
+            <td class="text-center">--</td>
+            <td class="text-center">--</td>
+            <td class="text-center">Pocket Size - {{order.measurement.pocketSize}}</td>
         </tr>
         <tr>
-            <td>NA</td>
-            <td>NA</td>
-            <td>{{order.measurement.pocketSize}}</td>
+            <td class="text-center">{{order.measurement.Blazer_Jacket_Additional_Information}}</td>
+            <td class="text-center">{{order.measurement.Kurta_Shirt_Additional_Information}}</td>
+            <td class="text-center">{{order.measurement.Trouser_Additional_Information}}</td>
         </tr>
         <tr>
-            <td>NA</td>
-            <td>NA</td>
-            <td>{{order.measurement.Trouser_Additional_Information}}</td>
-        </tr>
-        <tr>
-            <td>NA</td>
-            <td>NA</td>
-            <td>{{order.measurement.Trouser_Additional_Information}}</td>
-        </tr>
-        <tr>
-            <td>{{order.measurement.Blazer_sample_cloth_image}}</td>
-            <td>{{order.measurement.Kurta_sample_cloth_image}}</td>
-            <td>{{order.measurement.Trouser_sample_cloth_image}}</td>
+            <td class="text-center"><img src="/images/{{order.measurement.Blazer_sample_cloth_image}}" alt="" width="100%" height="200px"></td>
+            <td class="text-center"><img src="/images/{{order.measurement.Kurta_sample_cloth_image}}" alt="" width="100%" height="200px"></td>
+            <td class="text-center"><img src="/images/{{order.measurement.Trouser_sample_cloth_image}}" alt="" width="100%" height="200px"></td>
         </tr>
     </table>
-    <button>Cutting Started</button>
-    <button>Stiching Started</button>
-    <button>Shirt Finished</button>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <input type="radio" name="status" id="cutting" value="cutting" {% if order.order_status == "CUTTING STARTED" %} checked {% endif %}>
+        <label for="cutting">Cutting</label>
+        <input type="radio" name="status" id="stitching" value="stitching" {% if order.order_status == "STITCHING STARTED" %} checked {% endif %}>
+        <label for="stitching">Stitching</label>
+        <input type="radio" name="status" id="finished" value="finished" {% if order.order_status == "ORDER READY" %} checked {% endif %}>
+        <label for="finished">Order Ready</label>
+    
+        <div class="my-3">
+            <button type="submit" class="btn btn-success">Update Status</button>
+        </div>
+    </form>
+    
+    </div>
 </body>
 </html>

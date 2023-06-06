@@ -10,5 +10,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('create-admin/', name="create-admin", view=create_super_user),
     path('masters/', include('masters.urls')),
+    path('quality/', include('qao.urls')),
     path('', view=homepage, name="home")
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

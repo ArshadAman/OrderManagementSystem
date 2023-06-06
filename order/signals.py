@@ -15,7 +15,7 @@
 #         return
 
 #     # Check if the order status has changed
-#     if old_status != instance.order_status:
+#     if old_status != instance.order_status and instance.order_status != "QUALITY CHECK FAILED":
 #         # Send email to customer
 #         subject = f'Order {instance.order_name} status changed to {instance.order_status}'
 #         message = f'Dear customer,\n\nYour order {instance.order_name} with orderId {instance.id} has been updated to {instance.order_status}.\n\nThank you!'

@@ -4,11 +4,14 @@ from datetime import date
 
 class Order(models.Model):
     STATUS_CHOICES = (
-        ('RECEIVED', 'Received'),
-        ('PROCESSING', 'Processing'),
-        ('CUTTING', 'Cutting'),
-        ('STICHING', 'Stiching'),
-        ('DELIVERED', 'Delivered'),
+        ('RECEIVED', 'RECEIVED'),
+        ('PROCESSING', 'PROCESSING'),
+        ('CUTTING STARTED', 'CUTTING STARTED'),
+        ('STITCHING STARTED', 'STITCHING STARTED'),
+        ('ORDER READY', 'ORDER READY'),
+        ('QUALITY CHECK PASSED', 'QUALITY CHECKED PASSED'),
+        ('QUALITY CHECK FAILED', 'QUALITY CHECKED FAILED'),
+        ('DELIVERED', 'DELIVERED'),
     )
     id = models.UUIDField(default=uuid.uuid4, unique=True,
                           primary_key=True, editable=False)
@@ -20,7 +23,7 @@ class Order(models.Model):
     order_due_date = models.DateField(auto_now=False, auto_now_add=False, null=True, blank=True)
     order_priorty = models.IntegerField(default=0, blank=True, null=True)
     order_status = models.CharField(
-        max_length=20, choices=STATUS_CHOICES, default='RECEIVED')
+        max_length=200, choices=STATUS_CHOICES, default='RECEIVED')
 
     def __str__(self) -> str:
         return f"{self.customer_name}'s order of - {self.order_name} has been {self.order_status}"

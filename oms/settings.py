@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'order',
-    'masters'
+    'masters',
+    "qao",
 ]
 
 MIDDLEWARE = [
@@ -121,7 +122,6 @@ PASSWORD_HASHERS = [
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
-1
 TIME_ZONE =  'Asia/Kolkata'
 
 USE_I18N = True
