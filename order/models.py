@@ -97,7 +97,7 @@ class Mesurement(models.Model):
     )
     # id = models.UUIDField(primary_key=True, default=uuid.uuid4)
     order = models.OneToOneField(Order, on_delete=models.CASCADE,
-                                 default=uuid.uuid4, related_name='measurement', blank=True)
+                                 related_name='measurement', blank=True)
     customer_name = models.CharField(max_length=100, blank=False, null=True)
     customer_email = models.EmailField(max_length=300, blank=False, null=True)
     customer_phone = models.IntegerField(blank=False, null=False)
