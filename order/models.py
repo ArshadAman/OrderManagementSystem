@@ -2,6 +2,7 @@ from django.db import models
 import uuid
 from datetime import date
 
+
 class Order(models.Model):
     STATUS_CHOICES = (
         ('RECEIVED', 'RECEIVED'),
@@ -16,19 +17,21 @@ class Order(models.Model):
     id = models.UUIDField(default=uuid.uuid4, unique=True,
                           primary_key=True, editable=False)
     order_name = models.CharField(max_length=100, blank=False)
-    order_quantity = models.IntegerField(default=1, blank=False)
     customer_email = models.EmailField(max_length=300, null=True, blank=True)
     customer_name = models.CharField(max_length=100, null=True, blank=False)
-    order_recieved_date = models.DateField(auto_now=False, auto_now_add=False, null=True, blank=True)
-    order_due_date = models.DateField(auto_now=False, auto_now_add=False, null=True, blank=True)
+    order_recieved_date = models.DateField(
+        auto_now=False, auto_now_add=False, null=True, blank=True)
+    order_due_date = models.DateField(
+        auto_now=False, auto_now_add=False, null=True, blank=True)
     order_priorty = models.IntegerField(default=0, blank=True, null=True)
     order_status = models.CharField(
         max_length=200, choices=STATUS_CHOICES, default='RECEIVED')
+    number_of_order_done = models.IntegerField(default=0, blank=False, name=False)
 
     def __str__(self) -> str:
         return f"{self.customer_name}'s order of - {self.order_name} has been {self.order_status}"
-    
-    def save(self,*args, **kwargs):
+
+    def save(self, *args, **kwargs):
         if self.order_due_date:
             days_remaining = (self.order_due_date - date.today()).days
             self.order_priorty = max(0, days_remaining)
@@ -93,12 +96,13 @@ class Mesurement(models.Model):
         (2.75, 2.75),
     )
     # id = models.UUIDField(primary_key=True, default=uuid.uuid4)
-    order = models.OneToOneField(Order, on_delete=models.CASCADE, default=uuid.uuid4, related_name='measurement', blank=True)
+    order = models.OneToOneField(Order, on_delete=models.CASCADE,
+                                 default=uuid.uuid4, related_name='measurement', blank=True)
     customer_name = models.CharField(max_length=100, blank=False, null=True)
     customer_email = models.EmailField(max_length=300, blank=False, null=True)
     customer_phone = models.IntegerField(blank=False, null=False)
 
-    # Blazer and Jacket 
+    # Blazer and Jacket
 
     front_length = models.CharField(max_length=20, blank=True, null=True)
     shoulder = models.CharField(max_length=20, blank=True, null=True)
@@ -111,10 +115,11 @@ class Mesurement(models.Model):
     sherwani_vest = models.CharField(max_length=50, blank=True, null=True)
     slits = models.CharField(
         max_length=10, choices=SLITS_CHOICES, null=True, blank=True)
-    
-    Blazer_Jacket_Additional_Information = models.TextField(max_length=2000, blank=True, null=True)
-    Blazer_sample_cloth_image = models.ImageField(upload_to="sample_images/blazers", blank=True, null=True)
-    
+
+    Blazer_Jacket_Additional_Information = models.TextField(
+        max_length=2000, blank=True, null=True)
+    Blazer_sample_cloth_image = models.ImageField(
+        upload_to="sample_images/blazers", blank=True, null=True)
 
     # Kurta Mesurement
 
@@ -136,20 +141,22 @@ class Mesurement(models.Model):
         max_length=20, choices=Neck, blank=True, null=True)
     kurta_Collor_Choices = models.FloatField(
         max_length=20, choices=CollorPoint, blank=True, null=True)
-    
-    Kurta_Shirt_Additional_Information = models.TextField(max_length=2000, blank=True, null=True)
-    Kurta_sample_cloth_image = models.ImageField(upload_to="sample_images/kurta", blank=True, null=True)
+
+    Kurta_Shirt_Additional_Information = models.TextField(
+        max_length=2000, blank=True, null=True)
+    Kurta_sample_cloth_image = models.ImageField(
+        upload_to="sample_images/kurta", blank=True, null=True)
 
     # Trouser Mesurement
 
-    Tourser_length = models.CharField(max_length=20, blank=True, null=True)
-    Tourser_inseam = models.CharField(max_length=20, blank=True, null=True)
-    Tourser_bottom = models.CharField(max_length=20, blank=True, null=True)
-    Tourser_knee = models.CharField(max_length=20, blank=True, null=True)
-    Tourser_thigh = models.CharField(max_length=20, blank=True, null=True)
-    Tourser_waist = models.CharField(max_length=20, blank=True, null=True)
-    Tourser_hips = models.CharField(max_length=20, blank=True, null=True)
-    Tourser_rounding = models.CharField(max_length=20, blank=True, null=True)
+    Trouser_length = models.CharField(max_length=20, blank=True, null=True)
+    Trouser_inseam = models.CharField(max_length=20, blank=True, null=True)
+    Trouser_bottom = models.CharField(max_length=20, blank=True, null=True)
+    Trouser_knee = models.CharField(max_length=20, blank=True, null=True)
+    Trouser_thigh = models.CharField(max_length=20, blank=True, null=True)
+    Trouser_waist = models.CharField(max_length=20, blank=True, null=True)
+    Trouser_hips = models.CharField(max_length=20, blank=True, null=True)
+    Trouser_rounding = models.CharField(max_length=20, blank=True, null=True)
 
     Rise_Choices = models.CharField(
         max_length=20, choices=Rise, blank=True, null=True)
@@ -169,13 +176,26 @@ class Mesurement(models.Model):
         max_length=20, choices=MobilePockets, blank=True, null=True)
     pocketSize = models.CharField(max_length=50, blank=True, null=True)
 
-    Trouser_Additional_Information = models.TextField(max_length=2000, blank=True, null=True)
-    Trouser_sample_cloth_image = models.ImageField(upload_to="sample_images/trouser", blank=True, null=True)
+    Trouser_Additional_Information = models.TextField(
+        max_length=2000, blank=True, null=True)
+    Trouser_sample_cloth_image = models.ImageField(
+        upload_to="sample_images/trouser", blank=True, null=True)
 
-    # Images 
-    blazer_image = models.ImageField(upload_to='blazer_images', blank=True, null=True, default='/form/blazer-jacket.bmp')
-    kurta_image = models.ImageField(upload_to='kurta_images', blank=True, null=True, default='/form/shirt-kurta.bmp')
-    trouser_image = models.ImageField(upload_to='trouser_images', blank=True, null=True, default='/form/trouser.bmp')
+    # Order Quantity
+    jacket_order_quantity = models.IntegerField(
+        default=1, blank=False, null=False)
+    kurta_order_quantity = models.IntegerField(
+        default=1, blank=False, null=False)
+    trouser_order_quantity = models.IntegerField(
+        default=1, blank=False, null=False)
+
+    # Images
+    blazer_image = models.ImageField(
+        upload_to='blazer_images', blank=True, null=True, default='/form/blazer-jacket.bmp')
+    kurta_image = models.ImageField(
+        upload_to='kurta_images', blank=True, null=True, default='/form/shirt-kurta.bmp')
+    trouser_image = models.ImageField(
+        upload_to='trouser_images', blank=True, null=True, default='/form/trouser.bmp')
 
     def __str__(self) -> str:
         return f"{self.customer_name}'s - Mesurement"

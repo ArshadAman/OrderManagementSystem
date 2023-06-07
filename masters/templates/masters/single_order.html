@@ -110,19 +110,34 @@
             <td class="text-center">{{order.measurement.Trouser_Additional_Information}}</td>
         </tr>
         <tr>
+            <td class="text-center">{{order.measurement.jacket_order_quantity}} Pcs</td>
+            <td class="text-center">{{order.measurement.kurta_order_quantity}} Pcs</td>
+            <td class="text-center">{{order.measurement.trouser_order_quantity}} Pcs</td>
+        </tr>
+        <tr>
             <td class="text-center"><img src="/images/{{order.measurement.Blazer_sample_cloth_image}}" alt="" width="100%" height="200px"></td>
             <td class="text-center"><img src="/images/{{order.measurement.Kurta_sample_cloth_image}}" alt="" width="100%" height="200px"></td>
             <td class="text-center"><img src="/images/{{order.measurement.Trouser_sample_cloth_image}}" alt="" width="100%" height="200px"></td>
         </tr>
     </table>
-    <form action="" method="POST">
+    <form action="" method="POST" class="d-flex flex-column align-items-center justify-content-center">
         {% csrf_token %}
-        <input type="radio" name="status" id="cutting" value="cutting" {% if order.order_status == "CUTTING STARTED" %} checked {% endif %}>
-        <label for="cutting">Cutting</label>
-        <input type="radio" name="status" id="stitching" value="stitching" {% if order.order_status == "STITCHING STARTED" %} checked {% endif %}>
-        <label for="stitching">Stitching</label>
-        <input type="radio" name="status" id="finished" value="finished" {% if order.order_status == "ORDER READY" %} checked {% endif %}>
-        <label for="finished">Order Ready</label>
+        <div>
+            <input type="radio" name="status" id="cutting" value="cutting" {% if order.order_status == "CUTTING STARTED" %} checked {% endif %}>
+            <label for="cutting">Cutting</label>
+        </div>
+        <div>
+            <input type="radio" name="status" id="stitching" value="stitching" {% if order.order_status == "STITCHING STARTED" %} checked {% endif %}>
+            <label for="stitching">Stitching</label>
+        </div>
+        <div>
+            <input type="radio" name="status" id="finished" value="finished" {% if order.order_status == "ORDER READY" %} checked {% endif %}>
+            <label for="finished">Order Ready</label>
+        </div>
+
+        <div class="d-flex align-items-center">
+            <button class="btn btn-dark btn-sm mx-2" type="button" onclick="decrease()">-</button><input type="number" name="number" id="number" value={{order.number_of_order_done}} class="text-center"><button class="btn btn-dark btn-sm mx-2" onclick="increase()" type="button">+</button>
+        </div>
     
         <div class="my-3">
             <button type="submit" class="btn btn-success">Update Status</button>
@@ -130,5 +145,23 @@
     </form>
     
     </div>
+
+    <script>
+        function increase(){
+            let val = Number(document.getElementById("number").value);
+            val++;
+            document.getElementById("number").value = val;
+        }
+        function decrease(){
+            let val = Number(document.getElementById("number").value);
+            if(val<=0){
+                document.getElementById("number").value = 0;
+            }
+            else{
+                val--;
+                document.getElementById("number").value = val;
+            }
+        }
+    </script>
 </body>
 </html>

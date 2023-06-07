@@ -12,7 +12,7 @@
 
 <body>
     <h1 class="text-center mt-5">Quality Check Portal</h1>
-    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center flex-wrap">
         {% for order in all_orders %}
         <div class="card text-bg-{% if order.order_status == 'QUALITY CHECK PASSED' %}success{% elif order.order_status == 'QUALITY CHECK FAILED' %}danger{% else %}warning{% endif %} my-5 mx-2"
             style="max-width: 18rem;">

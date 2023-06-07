@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from order.models import Order
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, logout, login
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 
 # Create your views here.
 
@@ -18,6 +18,7 @@ def check_quality_login(request):
     return render(request, 'qao/login.html')
 
 @login_required(login_url="login-quality")
+@user_passes_test(lambda user: user.username == 'QAofficer', login_url="login-quality")
 def check_quality(request):
     all_orders = Order.objects.all().order_by('order_priorty')
     if request.method == "POST":

@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -11,13 +12,23 @@
       crossorigin="anonymous"
     />
     <title>Admin Signup</title>
+    <style>
+      body{
+        overflow-x: hidden;
+      }
+    </style>
   </head>
   <body>
-    <div class="my-5 d-flex justify-content-center" style="height: 80vh; align-items: center; width:100vw;">
-      <a href={% url 'admin:index' %} class="mx-4"><button class="btn btn-lg btn-success" >Go to Dashboard</button></a>
-      {% if admin_exits %}
-        <a href={% url 'create-admin' %}><button class="btn btn-lg btn-danger" >Create Admin account</button></a>
-      {% endif %}
+    <div class="logo d-flex flex-column justify-content-center align-items-center"style="width:100vw; height:100vh;">
+      <img src="{% static 'dashboard/vl.png' %}" alt="">
+      <div class="my-1 d-flex justify-content-center" style="align-items: center; width:100vw;">
+          <a href={% url 'admin:index' %} class="mx-4 my-1"><button class="btn btn-lg btn-primary" >Admin Dashboard</button></a>
+          {% if admin_exits %}
+            <a href={% url 'create-admin' %}><button class="btn btn-lg btn-danger my-4" >Create Admin account</button></a>
+          {% endif %}
+          <a href={% url 'view-orders' %} class="mx-4 my-4"><button class="btn btn-lg btn-dark" >Masterji Dashboard</button></a>
+          <a href={% url 'check-quality' %}><button class="btn btn-lg btn-info" >Quality Check Portal</button></a>
+      </div>
     </div>
     {% comment %} Scripts {% endcomment %}
     <script

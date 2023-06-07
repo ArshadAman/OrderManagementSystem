@@ -11,7 +11,8 @@
 </head>
 
 <body>
-    <div class="d-flex justify-content-center">
+    <h1 class="text-center mt-5">Master's Portal</h1>
+    <div class="d-flex justify-content-center flex-wrap">
         {% for order in all_orders %}
         {% if not order.order_status == "ORDER READY" %}
         <a href="{% url 'view-perticular-order' id=order.id %}" style="text-decoration: none;">
