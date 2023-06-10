@@ -1,0 +1,12 @@
+button, input[type="submit"]{
+    background-color: #2B275E;
+}
+
+.homepage{
+    background-color: #2B275E;
+    border-radius: 5px;
+}
+.homepage a{
+    color: #fff;
+}
+

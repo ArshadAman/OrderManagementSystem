@@ -1,0 +1,81 @@
+/* DASHBOARD */
+.dashboard td, .dashboard th {
+    word-break: break-word;
+}
+
+.dashboard .module table th {
+    width: 100%;
+}
+
+.dashboard .module table td {
+    white-space: nowrap;
+}
+
+.dashboard .module table td a {
+    display: block;
+    padding-right: .6em;
+}
+
+/* RECENT ACTIONS MODULE */
+
+.module ul.actionlist {
+    margin-left: 0;
+}
+
+ul.actionlist li {
+    list-style-type: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/* Custom Header  */
+
+#user-tools a{
+    padding: 6px 10px;
+    border-radius: 5px;
+    background-color: #2B275E;
+}
+
+#user-tools #logout-form button{
+    padding: 6px 10px;
+    border-radius: 5px;
+    background-color: rgb(224, 16, 33);
+}
+
+#content-main table{
+    border-spacing: 20px;
+    border-collapse: separate;
+}
+#content-main table caption{
+    background-color: #CBAA2E;
+}
+#content-main table tbody th a{
+    color: #2B275E;
+}
+#content-main table tbody .homepage{
+   background-color: #2B275E;
+   border-radius: 5px;
+}
+#content-main table tbody td a{
+    color: white;
+}
+
+
+#nav-sidebar table{
+    border-spacing: 20px;
+    border-collapse: separate;
+}
+table .t-head{
+    background-color: #CBAA2E;
+}
+#content-main table tbody th a{
+    color: #2B275E;
+}
+#content-main table tbody .homepage{
+   background-color: #2B275E;
+   border-radius: 5px;
+}
+#content-main table tbody td a{
+    color: white;
+}
